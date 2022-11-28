@@ -1,5 +1,6 @@
 import { Form, Link, useActionData } from "@remix-run/react";
-import { ActionFunction, json } from '@remix-run/node';
+import type { ActionFunction} from '@remix-run/node';
+import { json } from '@remix-run/node';
 import { redirect } from '@remix-run/node';
 import invariant from "tiny-invariant";
 import { getGame } from "~/models/game.server";

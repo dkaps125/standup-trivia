@@ -1,6 +1,6 @@
 import type { ActionFunction, LoaderFunction } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
-import { Form, useActionData, useCatch, useLoaderData } from "@remix-run/react";
+import { Form, Link, useActionData, useCatch, useLoaderData, useSubmit } from "@remix-run/react";
 import qs from "qs";
 import invariant from "tiny-invariant";
 import * as React from 'react';
@@ -67,17 +67,43 @@ export const action: ActionFunction = async ({ request, params }) => {
 };
 
 export default function PlayGamePage() {
+  const [hasSubmitted, setSubmitted] = React.useReducer(() => true, false);
+  const submit = useSubmit();
   const data = useLoaderData() as LoaderData;
   const actionData = useActionData() as ActionData;
 
   const entrantRef = React.useRef<HTMLInputElement>(null);
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    submit(event.currentTarget);
+    setSubmitted();
+  }
+
+  if (hasSubmitted) {
+    return (
+      <div>
+        <h3 className="text-2xl font-bold">{data.game.topic}</h3>
+        <p className="py-2">{data.game.host}</p>
+        <hr className="my-4" />
+        <p className="my-4">
+          Thanks for playing! The host will announce the winners shortly.
+        </p>
+        <Link
+          to="/"
+          className="rounded bg-blue-500  py-2 px-4 text-white hover:bg-blue-600 focus:bg-blue-400"
+        >
+          Go home
+        </Link>
+      </div>
+    )
+  }
 
   return (
     <div>
       <h3 className="text-2xl font-bold">{data.game.topic}</h3>
       <p className="py-2">{data.game.host}</p>
       <hr className="my-4" />
-      <Form method="post">
+      <Form method="post" onSubmit={handleSubmit}>
         <label className="flex w-full flex-col gap-1 pb-3">
           <span>Your name: </span>
           <input

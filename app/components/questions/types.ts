@@ -1,6 +1,6 @@
-import React from "react";
-import { Answer } from "~/models/answer.server";
-import { Question } from "~/models/question.server";
+import type React from "react";
+import type { Answer } from "~/models/answer.server";
+import type { Question } from "~/models/question.server";
 
 export type QuestionType = "multiple_choice" | "freeform" | "number"
 

@@ -1,7 +1,8 @@
 import arc from "@architect/functions";
 import cuid from "cuid";
-import { QuestionType } from "~/components/questions/types";
-import { Game, idToDynamoAttribute } from "./game.server";
+import type { QuestionType } from "~/components/questions/types";
+import type { Game} from "./game.server";
+import { idToDynamoAttribute } from "./game.server";
 
 export type Question = {
   pk: string;

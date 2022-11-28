@@ -1,10 +1,11 @@
 import { Form, Link, useActionData, useLoaderData } from "@remix-run/react";
-import { ActionFunction, json, LoaderFunction, redirect } from "@remix-run/node";
+import type { ActionFunction, LoaderFunction} from "@remix-run/node";
+import { json, redirect } from "@remix-run/node";
 import * as React from "react";
 import invariant from "tiny-invariant";
 import qs from 'qs';
 import { questionTypes } from "~/components/questions";
-import { QuestionType } from "~/components/questions/types";
+import type { QuestionType } from "~/components/questions/types";
 import { addQuestion } from "~/models/question.server";
 import { getGame } from "~/models/game.server";
 

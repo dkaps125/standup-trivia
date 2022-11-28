@@ -1,5 +1,5 @@
-import { Answer } from "~/models/answer.server";
-import { Question } from "~/models/question.server";
+import type { Answer } from "~/models/answer.server";
+import type { Question } from "~/models/question.server";
 
 export const EditFreeformQuestion = () => {
   return (
