@@ -1,7 +1,7 @@
 import { EditFreeformQuestion, getFreeformCorrectAnswer, PlayFreeformQuestion } from "./freeform/freeform";
 import { EditMultipleChoiceQuestion, getMultipleChoiceCorrectAnswer, PlayMultipleChoiceQuestion } from "./multipleChoice/multipleChoice";
 import { EditNumberQuestion, getNumberCorrectAnswer, PlayNumberQuestion } from "./number/number";
-import { Question, QuestionComponent, QuestionType } from "./types";
+import { QuestionComponent, QuestionType } from "./types";
 
 export const questionTypes: { [key in QuestionType]: QuestionComponent } = {
   'freeform': {
